@@ -6,6 +6,7 @@ RTClib (courtesy of Adafruit) from which it was derrived. It adds the ability
 to read out the temperature as sensed by the Chronodot's internal temperature
 sensor. The readings are available in both celcius and farenheit.
 
+Original version (apparently) by Stephanie Maks and JeeLabs.
 Revisions by HDTodd, Bozeman, MT / Williston, VT
 
 Examples are provided.
