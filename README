@@ -1,4 +1,5 @@
 Chronodot Library for the Arduino IDE
+v 2.0
 
 This library provides the usual Real Time Clock (RTC) functions from the original
 RTClib (courtesy of Adafruit) from which it was derrived. It adds the ability
@@ -13,7 +14,8 @@ Changelog:
 Feb 2016	[hdt] Revised the "isrunning" logic to mean what it says:
     		"isrunning" true ==> hardware is there & running
 		Revised testing routine to use it correctly and
-		invoke the pseudo clock "RTC_Millis" if harware absent
+		invoke the pseudo clock "RTC_Millis" if hardware absent
+		Added version # to README and started with 2.0
 August 2015	[hdt] Converted to use Truchsess's I2C library rather than
        		Wire library in order to be compatible with other
 		devices that need repeated-starts, for which Wire fails.
