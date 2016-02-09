@@ -5,11 +5,16 @@ RTClib (courtesy of Adafruit) from which it was derrived. It adds the ability
 to read out the temperature as sensed by the Chronodot's internal temperature
 sensor. The readings are available in both celcius and farenheit.
 
+Revisions by HDTodd, Bozeman, MT / Williston, VT
+
 Examples are provided.
 
 Changelog:
-
-August 2015	Converted to use Truchsess's I2C library rather than
+Feb 2016	[hdt] Revised the "isrunning" logic to mean what it says:
+    		"isrunning" true ==> hardware is there & running
+		Revised testing routine to use it correctly and
+		invoke the pseudo clock "RTC_Millis" if harware absent
+August 2015	[hdt] Converted to use Truchsess's I2C library rather than
        		Wire library in order to be compatible with other
 		devices that need repeated-starts, for which Wire fails.
 		Adaptation by hdtodd from work by JeeLabs and Stephanie Maks
