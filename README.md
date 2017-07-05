@@ -34,10 +34,9 @@ Re-documented July 5, 2017
 
 * Feb 2016 [hdt] 
   * Revised the "isrunning" logic to mean what it says: "isrunning" true ==> hardware is present & running
-  * 	    Revised testing routine to use it correctly and
-  	    invoke the pseudo clock "RTC_Millis" if hardware absent
-	    *  	   Added version # to README and started with 2.0
-* August 2015	   [hdt] 
+  * Revised testing routine to use it correctly and invoke the pseudo clock "RTC_Millis" if hardware absent
+  * Added version # to README and started with 2.0
+* August 2015 [hdt] 
   * Converted to use Truchsess's I2C library rather than Wire library in order to be compatible with other devices that need repeated-starts, for which Wire fails.
   * Adaptation by hdtodd from work by JeeLabs and Stephanie Maks
 * May 2012:    Added preprocessor directives in Chronodot.h which allows the file to be included multiple times
