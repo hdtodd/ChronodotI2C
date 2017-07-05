@@ -4,7 +4,7 @@
 
 ## Arduino Chronodot V2.0 RTC library accessed via the I2C library rather than the Wire library
 
-##Summary
+## Summary
 
 This is a library of functions to access an I2C-connected Chronodot real-time clock using Truchsess's I2C library (<http://dsscircuits.com/articles/86-articles/66-arduino-i2c-master-library>) rather than the Wire library.  
 
