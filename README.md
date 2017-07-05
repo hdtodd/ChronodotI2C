@@ -22,10 +22,12 @@ I experimented with Wayne Truchsess's I2C library, which others had reported to 
 
 Original version (apparently) by JeeLabs, subsequently modified by Stephanie Maks. Revisions for Truchsess's I2C library by:
 
-```David Todd, Bozeman, MT: <hdtodd@gmail.com>  
+```
+David Todd, Bozeman, MT: <hdtodd@gmail.com>  
 August 3, 2015  
 Revised February 9, 2016  
-Re-documented July 5, 2017```
+Re-documented July 5, 2017
+```
 
 
 ## Changelog
