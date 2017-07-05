@@ -1,6 +1,8 @@
-#ChronodotI2C 
-####v2.0, 2017-July-05
-##Arduino Chronodot V2.0 RTC library accessed via the I2C library rather than the Wire library
+# ChronodotI2C
+
+#### v2.0, 2017-July-05
+
+## Arduino Chronodot V2.0 RTC library accessed via the I2C library rather than the Wire library
 
 ##Summary
 
