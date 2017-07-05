@@ -61,8 +61,8 @@ public:
 
 protected:
     uint8_t yOff, m, d, hh, mm, ss;
-    float ttf=0;
-    float ttc=0;
+    float ttf;
+    float ttc;
 };
 
 // Chronodot based on the DS3231 chip connected via I2C and the I2C Master Library
