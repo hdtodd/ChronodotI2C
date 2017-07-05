@@ -2,7 +2,7 @@
 ## v2.0, 2017-July-05
 ## Arduino Chronodot V2.0 RTC library accessed via the I2C library rather than the Wire library
 
-###Summary
+##Summary
 
 This is a library of functions to access an I2C-connected Chronodot real-time clock using Truchsess's I2C library (<http://dsscircuits.com/articles/86-articles/66-arduino-i2c-master-library>) rather than the Wire library.  
 
@@ -12,7 +12,7 @@ This adaptation uses the I2C library rather than the Wire library but otherwise 
 
 There appears to be no usage restriction (JeeLabs explicitly the code released to the public domain). 
  
-###Motivation
+##Motivation
 
 While working on a package of Arduino routines that use both the MPL3115A2 altitude/barometer/temp sensor and the Chronodot RTC, I found that Wire library distributed with the Arduino IDE package (`<`Wire.h`>`) that is most commonly used for accessing sensors via I2C became unreliable over time. The problem manifested as sporadic incorrect readings of pressure or temperature, eventually failing to make any correct readings.  I initially attributed the problem to the MPL3115A2 itself, but researching, I found that other Freescale devices (as the MPL3115A2 is) were similarly unreliable over time because of I2C communication failures.  This is reportedly due to the use of repeated-starts by those devices, which Wire library apparently doesn't handle well.
 
@@ -26,7 +26,7 @@ Original version (apparently) by JeeLabs, subsequently modified by Stephanie Mak
 >>Re-documented July 5, 2017
 
 
-###Changelog
+##Changelog
 
 * Feb 2016 [hdt] 
 	* Revised the "isrunning" logic to mean what it says: "isrunning" true ==> hardware is present & running
