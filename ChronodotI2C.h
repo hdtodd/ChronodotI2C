@@ -5,10 +5,14 @@
 //   temperature data by Stephanie Maks
 //   http://planetstephanie.net/
 //
-// Revised to use I2C library rather than <Wire.h>
-// Removed support for Arduino < 100
-// Added register definition defines
-// by HDTodd, August, 2015
+// By HDTodd@gmail.com
+// August, 2015
+//   Revised to use I2C library rather than <Wire.h>
+//   Removed support for Arduino < 100
+//   Added register definition defines
+// January, 2018
+//   Added xconv2d 
+
 
 #ifndef CHRONODOT_H
 #define CHRONODOT_H
@@ -37,13 +41,15 @@
 #define MSB_TEMP  0x11
 #define LSB_TEMP  0x12
 
+uint8_t xconv2d(char *p);
+
 // Simple general-purpose date/time class (no TZ / DST / leap second handling!)
 class DateTime {
 public:
     DateTime (uint32_t t =0);
     DateTime (uint16_t year, uint8_t month, uint8_t day,
                 uint8_t hour =0, uint8_t min =0, uint8_t sec =0, float tempF = 0.0, float tempC = 0.0);
-    DateTime (const char* date, const char* time);
+    DateTime (char* date, char* time);
     uint16_t year() const       { return 2000 + yOff; }
     uint8_t month() const       { return m; }
     uint8_t day() const         { return d; }

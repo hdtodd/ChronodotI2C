@@ -5,10 +5,13 @@
 //   temperature data by Stephanie Maks
 //   http://planetstephanie.net/
 //
-// Revised to use I2C library rather than <Wire.h>
-// Removed support for Arduino < 100
-// Added register definition defines
-// by HDTodd, August, 2015
+// By HDTodd@gmail.com
+// August, 2015
+//   Revised to use I2C library rather than <Wire.h>
+//   Removed support for Arduino < 100
+//   Added register definition defines
+// January, 2018
+//   Added xconv2d 
 
 #include "Arduino.h"
 #include "ChronodotI2C.h"
@@ -18,6 +21,11 @@
 // utility code, some of this could be exposed in the DateTime API if needed
 
 const uint8_t daysInMonth [] PROGMEM = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+
+// convert a two-digit char string to an unsigned integer; no error control
+uint8_t xconv2d(char* p) {
+  return 10*(uint8_t)( (*p>='0')&&(*p<='9') ? (*p-'0') : 0) + (uint8_t)(( (*(p+1)>='0')&&(*(p+1)<='9')) ? (*(p+1)-'0') : 0);
+  };
 
 // number of days since 2000/01/01, valid for 2001..2099
 static uint16_t date2days(uint16_t y, uint8_t m, uint8_t d) {
@@ -79,19 +87,13 @@ DateTime::DateTime (uint16_t year, uint8_t month, uint8_t day, uint8_t hour, uin
     ttc = tempC;
 }
 
-static uint8_t conv2d(const char* p) {
-    uint8_t v = 0;
-    if ('0' <= *p && *p <= '9')
-        v = *p - '0';
-    return 10 * v + *++p - '0';
-}
 
 // A convenient constructor for using "the compiler's time":
 //   DateTime now (__DATE__, __TIME__);
 // NOTE: using PSTR would further reduce the RAM footprint
-DateTime::DateTime (const char* date, const char* time) {
+DateTime::DateTime (char* date, char* time) {
     // sample input: date = "Dec 26 2009", time = "12:34:56"
-    yOff = conv2d(date + 9);
+    yOff = xconv2d(date + 9);
     // Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
     switch (date[0]) {
     case 'J': m = (date[1] == 'a') ? 1 : ( (date[2] == 'n') ? 6 : 7); break;
@@ -103,10 +105,10 @@ DateTime::DateTime (const char* date, const char* time) {
         case 'N': m = 11; break;
         case 'D': m = 12; break;
     }
-    d = conv2d(date + 4);
-    hh = conv2d(time);
-    mm = conv2d(time + 3);
-    ss = conv2d(time + 6);
+    d = xconv2d(date + 4);
+    hh = xconv2d(time);
+    mm = xconv2d(time + 3);
+    ss = xconv2d(time + 6);
     ttf = ttc = 0;
 }
 
@@ -163,8 +165,8 @@ uint8_t readStatus(uint8_t reg, uint8_t *datain, char *caller) {
 
   eC = I2c.read(CHRONODOT, reg, 1, datain);
   if ( eC != 0 ) {
-    Serial.print("I2C communication read error in "); Serial.print(caller); 
-    Serial.print("; Atmel I2C error code = 0x"); Serial.println(eC, HEX);    
+    Serial.print("[%Chronodot] I2C communication read error in "); Serial.print(caller); 
+    Serial.print("; I2C error code = 0x"); Serial.println(eC, HEX);    
   }
   return(eC);
 }
@@ -190,7 +192,6 @@ uint8_t Chronodot::isrunning(void) {
     return 1;
   else
     return 0;
-
 }
 
 // send new date & time to chronodot
