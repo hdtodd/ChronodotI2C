@@ -222,7 +222,7 @@ void Chronodot::adjust(const DateTime& dt) {
 //  and the last two contain the temp as integer in the MSB
 //  and 1/4 degree in the left two bits of the LSB
 DateTime Chronodot::now() {
-  uint8_t field, tB[7];  // tB = time/temp buffer string
+  uint8_t tB[7];               // tB = time/temp buffer string
   uint8_t ss, mm, hh, d, m;
   uint16_t y;
   const float tempLow2[4] = { 0.0, 0.25, 0.50, 0.75 }; 
