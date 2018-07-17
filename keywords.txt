@@ -6,11 +6,11 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-Arduino   KEYWORD1
-RTC       KEYWORD1
+Arduino	KEYWORD1
+RTC	KEYWORD1
 Chronodot	KEYWORD1
 DateTime	KEYWORD1
-I2C		KEYWORD1
+I2C	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
